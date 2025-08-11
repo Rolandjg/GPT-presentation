@@ -1,7 +1,7 @@
 ## GPT-presentation
 Create slideshow presentations with large language models
 
-## Example
+## Example with GLM-4.5
 ```bash
 python main.py "What is FLIP fluids and how is it unique, on a technnical level" --speaker "en-US-AriaNeural"
 ```
