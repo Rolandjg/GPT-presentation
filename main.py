@@ -48,7 +48,7 @@ def slides_to_images(slides, style, res):
         hti.screenshot(html_str=slides[i], css_str=style, save_as=output_path)
         os.rename(f"slide_{i}.png", f"slides/slide_{i}.png")
 
-def create_movie(script, speaker, output_path):
+def create_movie(script, speaker, speed, output_path):
     if not os.path.exists(os.path.abspath("audio")):
         os.mkdir("audio")
 
@@ -60,7 +60,7 @@ def create_movie(script, speaker, output_path):
     clips = []
 
     for i in range(len(segments)):
-        audio.generate_audio(f"audio/audio_{i}.mp3", segments[i], speaker)
+        audio.generate_audio(f"audio/audio_{i}.mp3", segments[i], speaker, speed)
         audio_clip = AudioFileClip(f"audio/audio_{i}.mp3")
         img = ImageClip(f"slides/slide_{i}.png").set_duration(audio_clip.duration+1) 
         video = img.set_audio(audio_clip)
@@ -101,4 +101,4 @@ if __name__=="__main__":
     style = re.search(r"<style>(.*?)</style>", response, re.DOTALL)
 
     slides_to_images(slides, style.group(1), args.resolution)
-    create_movie(script.group(1), args.speaker, args.output)
+    create_movie(script.group(1), args.voice, args.speed, args.output)
