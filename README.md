@@ -8,9 +8,12 @@ python main.py "What is FLIP fluids and how is it unique, on a technnical level"
 https://github.com/user-attachments/assets/b849d10d-4bde-46c6-830c-4dabdcbe9134
 
 ## Running
-- Clone this repo
-- Populate .env
-- pip install -r requirements.txt
+```bash
+git clone https://github.com/Rolandjg/GPT-presentation.git
+cd GPT-presentation/
+pip install -r requirements.txt
+```
+- Edit `.env` with your API key and model settings.
 - Run main.py
 
 # Command line usage
