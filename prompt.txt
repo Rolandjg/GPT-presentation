@@ -1,0 +1,27 @@
+
+Do so using the follow technique:
+Make each slide using HTML5, slideshows should be pretty and informative. Store the entire slideshow in this format:
+<slideshow>
+    <side_1>
+    html of slide 1
+    </slide_1>
+    <slide_2>
+    html of slide 2
+    </slide_2>
+    ...
+</slideshow>
+Instead of wasting time rewriting the same css styling for each html block, put your css styling once into <style></style> tags, this will reuse the same styling across different slides. The style tag should go BEFORE and OUTSIDE the <slideshow>, the <style> tag is a root tag with no parent. This will set the how the slideshow will look, so make sure to put extra care into the styles to make it pop.
+
+Then, once you've made the slide show, create a script to be spoken with the slideshow. Put the script in <script></script> tags. Write <slide_n> to denote when to show each slide when speaking the script. The content inside each slide tag should be plaintext and compatible with text to speech engines (the tags will be omitted) Here is a short example script:
+<script>
+	<slide_1> 
+		Do you want to learn how to grow mushrooms like these?
+	</slide_1>
+	<slide_2>
+		
+	</slide_2>
+	<slide_3>
+		This method will teach you the basic guide for growing mushrooms at home with little overhead.
+	</slide_3>
+</script>
+Output only the slideshow and script, nothing more. No explaining or precursor.

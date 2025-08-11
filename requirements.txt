@@ -1,0 +1,5 @@
+html2image
+moviepy==1.0.3
+openai
+edge-tts
+dotenv
