@@ -44,9 +44,9 @@ def slides_to_images(slides, style, res):
 
     hti = Html2Image(size=res)
     for i in range(len(slides)):
-        output_path = f"slide_{i}.png" # Html2Image is a strange fella
+        output_path = f"slide_{i+1}.png" # Html2Image is a strange fella
         hti.screenshot(html_str=slides[i], css_str=style, save_as=output_path)
-        os.rename(f"slide_{i}.png", f"slides/slide_{i}.png")
+        os.rename(f"slide_{i+1}.png", f"slides/slide_{i+1}.png")
 
 def create_movie(script, speaker, speed, output_path):
     if not os.path.exists(os.path.abspath("audio")):
@@ -62,7 +62,7 @@ def create_movie(script, speaker, speed, output_path):
     for i in range(len(segments)):
         audio.generate_audio(f"audio/audio_{i}.mp3", segments[i], speaker, speed)
         audio_clip = AudioFileClip(f"audio/audio_{i}.mp3")
-        img = ImageClip(f"slides/slide_{i}.png").set_duration(audio_clip.duration+1) 
+        img = ImageClip(f"slides/slide_{i+1}.png").set_duration(audio_clip.duration) 
         video = img.set_audio(audio_clip)
         video.write_videofile(
             f"clips/clip_{i}.mp4",
@@ -93,6 +93,10 @@ if __name__=="__main__":
 
     response = llm_call(prompt, client)
     print(response)
+
+    # Remove thinking info if it's there
+    if "</think>" in response: 
+        response = response.split("</think>")[-1]
 
     # Extract parts
     script = re.search(r"<script>(.*?)</script>", response, re.DOTALL)
