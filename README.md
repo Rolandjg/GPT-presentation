@@ -28,7 +28,7 @@ pip install -r requirements.txt
 
 ## Example
 ```bash
-python3 main.py "What the hard problem of consciousness is" --output -r 1920x1080 "output.mp4" -v "en_US_AvaNeural" -s "+20%"
+python3 main.py "What the hard problem of consciousness is" --output "output.mp4" -r 1920x1080 -v "en_US_AvaNeural" -s "+20%"
 ```
 
 # Voices
